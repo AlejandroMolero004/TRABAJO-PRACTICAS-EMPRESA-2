@@ -1,15 +1,22 @@
-.campos-traduccion {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 1rem;
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(40, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
+.button-container { grid-area: 1 / 4 ; }
+
+.cobol-container { grid-area: 3 / 2 / span 40 / span 2;}
+.cobol{ width: 100%; height: 100%; }
+
+.python-container { grid-area: 3 / 5 / span 40 / span 2; }
+.python{ width: 100%; height: 100%; }
+
 .shadow-effect {
-  border: none;
-   grid-column: 2;
-  grid-row: 1/ 1; 
+  border: none; 
   color: white;
-  padding: 14px 28px;
+  width: 100%; height: 100%;
   cursor: pointer;
   border-radius: 5px;
   background-color: #007bff; /* Color base del botón */

@@ -47,41 +47,41 @@ export const handler: Handlers<Message> = {
 export default function Traductor(props: PageProps<Message>) {
   return (
     <div class ="contenedor">
-        
-    <button type="submit" class="shadow-effect"> Traducir </button>
-      <form  method="POST" action="/traductor">
-        
-        <input
-          type="text"
-          id="codigo"
-          name="codigo"
-          value={props.data.codigo || ""}          
-        />
+           
+      <div class ="button-container">
+        <button type="submit" class="shadow-effect"> Traducir </button>
+      </div>
 
-        
-      </form>
-
-        <div class ="campos-traduccion">
-            <input
+      <div className="form">
+          <form  method="POST" action="/traductor">        
+          <input
+            type="text"
+            id="codigo"
+            name="codigo"
+            value={props.data.codigo || ""}          
+          />        
+          </form>
+      </div>
+      
+      <div class="cobol-container">
+          <input
             type="text"
             class="cobol"
             name="cobol"
             value={props.data.codigo || ""}
             readOnly
           />
-
-          {props.data.codigo_a_traducir && (
+      </div> 
+          
+      <div class="python-container">      
             <input
               type="text"
               class="python"
               name="python"
-              value={props.data.codigo_a_traducir}
+              value={props.data.codigo_a_traducir || ""}
               readOnly
-            />
-            )}
-        </div>
-          
-
+            />        
+      </div>
     </div>
    
   );
