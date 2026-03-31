@@ -9,7 +9,7 @@ from src.tratarprompt import traducir_codigo, tratarprompt
 from src.utilities import limpiar_prompt
 from src.tipos import codigo_a_traducir
 
-# ejecutar el servidor:  python -m uvicorn src.server:app --reload
+# ejecutar el servidor:  python -m uvicorn src.server:app --reload --port 8001
 app = FastAPI()
 
 # esto es para el css 
