@@ -2,10 +2,18 @@
 
 export default function Home() {
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <a href="/traductor" class="text-4xl font-bold">Traductor</a>
+    <>
+     
+      
+      <div class="container">
+        <h1>Mooderniza tu codigo COBOL</h1>
+        <p class="subtitle">
+          Traduce COBOL a código moderno en segundos
+        </p>
+          <a class="button" href="/traductor">
+            <span>Traductor</span>
+          </a>
       </div>
-    </div>
+    </>
   );
 }

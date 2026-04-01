@@ -1,28 +1,205 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("faded_gallery.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+
 .contenedor {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(40, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  
+  gap: 20px;
+   width: 100vw;
+  height: 100vh;
 }
 
+.img-cobol {
+  grid-area: 3 / 5 / span 4 / span 3;
+  
+  height: auto;
+}
+.img-cobol img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.img-python {
+  grid-area: 3 / 14 / span 4 / span 3;
+  
+  height: auto;
+}
+.img-python img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-.cobol-container { grid-area: 3 / 2 / span 40 / span 2;}
-.cobol{ width: 100%; height: 100%; }
+.cobol-container {
+  grid-area: 6 / 4 / span 10 / span 5;
+}
 
-.python-container { grid-area: 3 / 5 / span 40 / span 2; }
-.python{ width: 100%; height: 100%; }
+.python-container {
+  grid-area: 6 / 13 / span 10 / span 5;
+}
 
-.shadow-effect {
-  grid-area: 1 / 3 / span 1 / span 3;
-  border: none; 
+.cobol,
+.python {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  resize: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  outline: none;
+  backdrop-filter: blur(6px);
+}
+
+.cobol::placeholder,
+.python::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+h1 {
   color: white;
-  width: 100%; height: 100%;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #007bff; /* Color base del botón */
-  transition: box-shadow 0.3s ease-in-out; /* Transición suave del efecto de sombra */
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
 }
-.shadow-effect:hover {
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta el desplazamiento y la opacidad de la sombra */
+
+h1 span {
+  background: linear-gradient(90deg, #af40ff, #00ddeb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.button {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover,
+.button:active {
+  outline: 0;
+}
+
+.button span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  display: block;
+  transition: 300ms;
+}
+
+.button:hover span {
+  background: none;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.Btn-Container {
+  grid-area: 11 / 10 / span 1 / span 2;
+  display: flex;
+  width: 170px;
+  height: 50px;
+  background-color: #1d2129;
+  border-radius: 40px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+  justify-content: space-between;
+  justify-self: center;
+   align-self: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+}
+
+.icon-Container {
+  width: 45px;
+  height: 45px;
+  background-color: #f59aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #1d2129;
+  box-sizing: border-box;
+}
+
+.text {
+  width: calc(170px - 45px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1em;
+  letter-spacing: 1.2px;
+}
+
+.icon-Container svg {
+  transition-duration: 1.5s;
+}
+
+.Btn-Container:hover .icon-Container svg {
+  animation: arrow 1s linear infinite;
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 0;
+    margin-left: 0px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 10px;
+  }
 }
