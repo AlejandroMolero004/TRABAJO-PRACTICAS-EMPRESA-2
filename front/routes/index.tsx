@@ -2,11 +2,9 @@
 
 export default function Home() {
   return (
-    <>
-     
-      
+    <>      
       <div class="container">
-        <h1>Mooderniza tu codigo COBOL</h1>
+        <h1>Mooderniza tu código COBOL</h1>
         <p class="subtitle">
           Traduce COBOL a código moderno en segundos
         </p>
