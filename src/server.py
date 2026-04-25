@@ -4,6 +4,7 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
+from src.ejecutar_python import ejecutar_codigo_python
 from src.ejecutar_bat import llamar_bat
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -56,4 +57,10 @@ def traducir(request: Request, data: codigo_a_traducir):
     print(data.codigo)
     resultado_traduccion = traducir_codigo(data.codigo)
     return {"traduccion": resultado_traduccion}
-    
+
+@app.post("/ejecutar_python")
+@limiter.limit("5/minute")
+def ejecutar_python(request: Request, data: codigo_a_traducir):
+    print(data.codigo)
+    resultado_ejecucion = ejecutar_codigo_python(data.codigo)
+    return {"ejecucion": resultado_ejecucion}

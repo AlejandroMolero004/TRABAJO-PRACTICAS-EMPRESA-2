@@ -4,7 +4,7 @@ export const handler:Handlers = {
     POST: async (request: Request, ctx: FreshContext) => {
         const form = await request.formData();
         const username = form.get("username")?.toString() || "";
-        const password = form.get("password")?.toString() || "";
+        const password = form.get("password")?.toString() || ""; 
         if(username && password){
             console.log("entro",username,password);
             const headers = new Headers();
@@ -16,9 +16,8 @@ export const handler:Handlers = {
                 status: 302,
                 headers,
             });
-        }else{
-            return ctx.render();
-            
+        }else{            
+            return ctx.render();           
         }
     },
     GET: (_request: Request, ctx: FreshContext) => {

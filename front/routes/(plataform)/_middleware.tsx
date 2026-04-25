@@ -14,9 +14,9 @@ export const handler:MiddlewareHandler=async(req:Request,ctx:FreshContext<unknow
         console.log("username",username);
         console.log("password",password);
         const trlanslatorCollection = await connectToMongoDB()
-        console.log("collection",trlanslatorCollection);
+        
         const datamodel: UsuarioModel | null = await trlanslatorCollection.findOne({username:username,password:password});
-        console.log("datamodel",datamodel);
+        
         if (datamodel){
             return await ctx.next();
         }else{
@@ -24,7 +24,7 @@ export const handler:MiddlewareHandler=async(req:Request,ctx:FreshContext<unknow
              {
                 status:302,
                 headers:{
-                    location:"/login"
+                    location:"/login"                    
                 }
             }
             );

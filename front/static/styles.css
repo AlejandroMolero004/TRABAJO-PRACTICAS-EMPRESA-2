@@ -11,7 +11,9 @@ body {
   background-repeat: no-repeat;
   font-family: Arial, sans-serif;
 }
-
+pre {
+  color: white;
+}
 body {
   min-height: 100vh;
 }
@@ -50,6 +52,47 @@ body {
   
   height: auto;
 }
+.div-copiar-cobol {
+  grid-area: 16 /6/ span 1 / span 1;
+}
+.div-copiar-python {
+  grid-area: 16 /15/ span 1 / span 1;
+}
+.animar {
+  animation: flip-2-hor-top-1 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+.guardar {
+  grid-column: 10 / span 2; /* ocupa 2 columnas */
+  grid-row: 3;              /* fila 3 */
+  width: 100%;
+  height: 100%;
+}
+.btn-guardar {
+   width: 100%;
+  height: 100%;
+}
+.perfil {
+  grid-column: 17 / span 2; /* ocupa 2 columnas */
+  grid-row: 2;              /* fila 5 */
+  width: 100%;
+  height: 100%;
+}
+.btn-perfil {
+   width: 100%;
+  height: 100%;
+}
+
+@keyframes flip-2-hor-top-1 {
+  0% {
+    transform: translateY(0) rotateX(0);
+    transform-origin: 50% 0%;
+  }
+  100% {
+    transform: translateY(-100%) rotateX(-180deg);
+    transform-origin: 50% 100%;
+  }
+}
+
 .img-python img {
   width: 100%;
   height: 100%;
@@ -231,3 +274,4 @@ text-shadow: none;
   color: #fff;
   text-shadow: none
 };
+

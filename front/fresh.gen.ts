@@ -3,7 +3,9 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_plataform_middleware from "./routes/(plataform)/_middleware.tsx";
+import * as $_plataform_insertar_conversacion from "./routes/(plataform)/insertar_conversacion.tsx";
 import * as $_plataform_traductor from "./routes/(plataform)/traductor.tsx";
+import * as $_plataform_zona_usuario from "./routes/(plataform)/zona_usuario.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
@@ -11,12 +13,16 @@ import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $TraductorIsland from "./islands/TraductorIsland.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/(plataform)/_middleware.ts": $_plataform_middleware,
+    "./routes/(plataform)/_middleware.tsx": $_plataform_middleware,
+    "./routes/(plataform)/insertar_conversacion.tsx":
+      $_plataform_insertar_conversacion,
     "./routes/(plataform)/traductor.tsx": $_plataform_traductor,
+    "./routes/(plataform)/zona_usuario.tsx": $_plataform_zona_usuario,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/joke.ts": $api_joke,
@@ -26,6 +32,7 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/TraductorIsland.tsx": $TraductorIsland,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

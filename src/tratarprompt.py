@@ -21,6 +21,9 @@ def tratarprompt():
     prompt = f"""
     Eres un experto en modernización de código.
     Traduce este archivo COBOL a Python sin explicaciones.
+    Aparte haz una traducción fiel al codigo origanal de COBOL 
+    analiza el contexto del codigo y haz una traducción a Python 
+    que sea mas moderna y eficiente. 
     Devuelve solo el código en markdown.
 
     {cobol_code}
