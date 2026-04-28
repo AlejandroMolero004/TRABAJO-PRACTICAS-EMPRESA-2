@@ -1,7 +1,8 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { connectToMongoDB_conversaciones, ConversacionModel } from "../../bbdd/conexion.ts";
+import Zona_usuario from "../../islands/Zona_usuario.tsx";
 import { Message } from "./traductor.tsx";
- type User = {
+ export type User = {
     id?: string,
     username: string,
     cobol: string;  
@@ -27,19 +28,8 @@ export const handler: Handlers = {
 
 const Page = (props: PageProps<User[]>) => {
     return (
-        <div>
-            <h1>Zona de Usuario</h1>
-            <h2 style={{ color: 'white' }}>Conversaciones guardadas</h2>
-            <ul>
-                {props.data.map((user) => (
-                    <li key={user.id}>
-                        <strong style={{ color: 'white' }}>{user.username}</strong><br />
-                        <pre>{user.cobol}</pre>
-                        <pre>{user.python}</pre>
-                    </li>
-                ))}
-            </ul>
-        </div>
+       <Zona_usuario users={props.data} />
     );
 }
+
 export default Page;

@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "preact";
 import { Message } from "../routes/(plataform)/traductor.tsx";
-import { useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { connectToMongoDB_conversaciones } from "../bbdd/conexion.ts";
 type Props = {
   message: Message; 
@@ -12,7 +12,16 @@ const TraductorIsland:FunctionalComponent<Props> = ({message}) => {
 
     const cobolref = useRef<HTMLTextAreaElement>(null);
     const pythonref = useRef<HTMLTextAreaElement>(null);
-
+    useEffect(() => {
+      const cobolCookie = document.cookie.split("; ").find(row => row.startsWith("cobol="))?.split("=")[1];
+      const pythonCookie = document.cookie.split("; ").find(row => row.startsWith("python="))?.split("=")[1];
+      if (cobolCookie && cobolref.current) {
+        cobolref.current.value = decodeURIComponent(cobolCookie);
+      }
+      if (pythonCookie && pythonref.current) {
+        pythonref.current.value = decodeURIComponent(pythonCookie);
+      }
+    }, []);
     const handleClick = (language: "cobol" | "python") => () => {
       if (language === "cobol") {
         setAnimarcobol(true);
@@ -32,6 +41,10 @@ const TraductorIsland:FunctionalComponent<Props> = ({message}) => {
     const guardar_conversacion = async () => {
       const cobol = cobolref.current?.value || "";
       const python = pythonref.current?.value || "";
+      if (!python) {
+        alert("No hay código traducido para guardar");
+        return;
+      }
       const user = document.cookie.split("; ").find(row => row.startsWith("username="))?.split("=")[1] || "unknown_user";
       const response = await fetch ("http://localhost:8000/insertar_conversacion",{
         method:"POST",
@@ -50,6 +63,11 @@ const TraductorIsland:FunctionalComponent<Props> = ({message}) => {
         alert("Error al guardar la conversación");
       }
     }
+    const conservar_conversacion_actual = () => {
+      document.cookie = `cobol=${cobolref.current?.value || ""}; path=/`;
+      document.cookie = `python=${pythonref.current?.value || ""}; path=/`;
+      globalThis.location.href="/zona_usuario";
+    };
     return (
          <div class ="contenedor">
        
@@ -99,13 +117,13 @@ const TraductorIsland:FunctionalComponent<Props> = ({message}) => {
       </div>
 
       <div class="div-copiar-cobol">
-        <button class={animarcobol ? "animar" : "btn-copiar-cobol"} onClick={handleClick("cobol")}>Copy cobol</button>
+        <button class={animarcobol ? "animar" : "btn-copiar-cobol"} onClick={handleClick("cobol")}>Copy Cobol</button>
       </div>
       <div class = "guardar">
         <button class="btn-guardar" onClick={(_e) => guardar_conversacion()}>Guardar</button>
       </div>
       <div class ="perfil">
-        <button class="btn-perfil" onClick={(_e) => globalThis.location.href="/zona_usuario"}>Perfil</button>
+        <button class="btn-perfil" onClick={(_e) => conservar_conversacion_actual()}>Perfil</button>
       </div>
       <div class="img-python">
         <img onClick={(_e)=>ejecutar_python()} src="python.png" alt="Python Logo" />
@@ -119,7 +137,7 @@ const TraductorIsland:FunctionalComponent<Props> = ({message}) => {
               />     
       </div>
       <div class="div-copiar-python">
-        <button class={animarpython ? "animar" : "btn-copiar-cobol"} onClick={handleClick("python")}>Copy Python</button>
+        <button class={animarpython ? "animar" : "btn-copiar-python"} onClick={handleClick("python")}>Copy Python</button>
       </div>
     </div>
     )

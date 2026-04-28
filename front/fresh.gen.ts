@@ -15,6 +15,7 @@ import * as $login from "./routes/login.tsx";
 import * as $registro from "./routes/registro.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $TraductorIsland from "./islands/TraductorIsland.tsx";
+import * as $Zona_usuario from "./islands/Zona_usuario.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -35,6 +36,7 @@ const manifest = {
   islands: {
     "./islands/Counter.tsx": $Counter,
     "./islands/TraductorIsland.tsx": $TraductorIsland,
+    "./islands/Zona_usuario.tsx": $Zona_usuario,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
