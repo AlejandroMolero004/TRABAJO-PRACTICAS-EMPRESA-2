@@ -27,14 +27,15 @@ export const handler:Handlers = {
 
 export default function Login() {
     return (
-        
+        <div>
             <form method="POST" class="formulario" action="/login">
                 <label for="username" style="color: white;">Username:</label>
                 <input type="text" id="username" name="username" required />
                 <label for="password" style="color: white;">Password:</label>
                 <input type="password" id="password" name="password" required />
-                <button type="submit" class="btn-login">Login</button>                               
-            </form>
-        
+                <button type="submit" class="btn-login">Login</button>                   
+                <p style="color: white;">¿No tienes cuenta? <a href="/registro">Regístrate aquí</a></p>                                        
+            </form>         
+        </div>                    
     );
 }
