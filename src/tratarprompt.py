@@ -13,8 +13,7 @@ def tratarprompt(codigo):
     model = genai.GenerativeModel("gemini-1.5-flash")
     
 
-    with open("C:\\Users\\34684\\Documents\\TRABAJO-PRACTICAS-EMPRESA-2\\hola_mundo.cob", "r", encoding="utf-8") as f:
-        cobol_code = f.read()
+    
 
     model = genai.GenerativeModel("gemini-3-flash-preview")
 
