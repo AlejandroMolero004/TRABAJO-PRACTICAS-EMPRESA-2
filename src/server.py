@@ -46,8 +46,11 @@ def openIA():
 @app.post("/traducir")
 @limiter.limit("5/minute")
 def traducir(request: Request, data: codigo_a_traducir):
-    print(data.codigo)
-    resultado_traduccion = tratarprompt(data.codigo)
-    return {"traduccion": resultado_traduccion}
+    try:
+        resultado_traduccion = tratarprompt(data.codigo)
+        return {"traduccion": resultado_traduccion}
+    except Exception as e:
+        print("ERROR EN /traducir:", repr(e))
+        return {"error": str(e)}
 
 
