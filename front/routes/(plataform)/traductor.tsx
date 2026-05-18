@@ -35,6 +35,7 @@ export const handler: Handlers<Message> = {
       });
     }
     const data: { traduccion: string } = await response.json();
+    console.log(data)
     data.traduccion = data.traduccion .replace(/```python/g, "") // quita ```python
                                       .replace(/```/g, "")       // quita ```
                                       .trim();
