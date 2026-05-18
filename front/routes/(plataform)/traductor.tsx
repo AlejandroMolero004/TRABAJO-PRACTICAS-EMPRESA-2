@@ -17,7 +17,7 @@ export const handler: Handlers<Message> = {
         codigo_a_traducir: "",
       });
     }
-    const response = await fetch("http://localhost:8001/traducir", {
+    const response = await fetch("https://trabajo-practicas-empresa-2-production.up.railway.app/traducir", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
