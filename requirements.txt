@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+slowapi
+jinja2
+pydantic
+python-dotenv

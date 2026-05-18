@@ -4,8 +4,6 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
-from src.ejecutar_python import ejecutar_codigo_python
-from src.ejecutar_bat import llamar_bat
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
@@ -28,7 +26,7 @@ app.state.limiter = limiter
 global resultado
 resultado = None
 
-resultado = llamar_bat()
+
 
 url = "http://localhost:8001/"
 
@@ -38,12 +36,6 @@ print(f"El servidor está corriendo en {url}")
 def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     return templates.TemplateResponse("index.html", {"request": request, "resultado": "Has superado el límite de solicitudes. Por favor, inténtalo de nuevo más tarde."}, status_code=429)
 
-@app.get("/")
-def home():
-    if resultado:      
-        return templates.TemplateResponse("index.html", {"request": {}, "resultado": resultado.stdout.strip().splitlines()[0]})
-    else:
-        return {"message": "No se ha ejecutado el bat todavía"}
 
 @app.get("/openIA")
 def openIA():
@@ -55,12 +47,7 @@ def openIA():
 @limiter.limit("5/minute")
 def traducir(request: Request, data: codigo_a_traducir):
     print(data.codigo)
-    resultado_traduccion = traducir_codigo(data.codigo)
+    resultado_traduccion = tratarprompt(data.codigo)
     return {"traduccion": resultado_traduccion}
 
-@app.post("/ejecutar_python")
-@limiter.limit("5/minute")
-def ejecutar_python(request: Request, data: codigo_a_traducir):
-    print(data.codigo)
-    resultado_ejecucion = ejecutar_codigo_python(data.codigo)
-    return {"ejecucion": resultado_ejecucion}
+
